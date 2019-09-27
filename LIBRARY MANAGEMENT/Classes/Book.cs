@@ -84,7 +84,7 @@ namespace LIBRARY_MANAGEMENT.Classes
         {
             List<Book> ListeBR = new List<Book>();
 
-            command = new SqlCommand("SELECT id, titre, auteur,status FROM book WHERE titre LIKE @research", Database.Instance);
+            command = new SqlCommand("SELECT id, titre, auteur,status FROM book WHERE titre LIKE @research OR auteur LIKE @research", Database.Instance);
             research = "%" + research + "%";
             command.Parameters.Add(new SqlParameter("@research", research ));
 

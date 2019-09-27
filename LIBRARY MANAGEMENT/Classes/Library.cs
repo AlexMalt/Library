@@ -9,6 +9,7 @@ namespace LIBRARY_MANAGEMENT.Classes
     {
         private int idUser;
         private int idBook;
+        public static event Action<string> livreNonRendu;
 
 
         private SqlCommand command;
@@ -17,10 +18,11 @@ namespace LIBRARY_MANAGEMENT.Classes
         public int IdUser { get => idUser; set => idUser = value; }
         public int IdBook { get => idBook; set => idBook = value; }
 
-        public void BorrowBook(int carte, int idBook)
+        public bool BorrowBook(int carte, int idBook)
         {
             BookStatus_Enum statusBook = BookStatus_Enum.disponible;
             bool bookExist = true;
+            bool empruntOk = false;
 
             command = new SqlCommand("SELECT id FROM personne WHERE num_user = @carte", Database.Instance);
             command.Parameters.Add(new SqlParameter("@carte", carte));
@@ -64,8 +66,11 @@ namespace LIBRARY_MANAGEMENT.Classes
 
                 command.ExecuteNonQuery();
                 command.Dispose();
-                Database.Instance.Close();
+                empruntOk = true;
+                
             }
+            Database.Instance.Close();
+            return empruntOk;
         }
 
         public void ReturnBook(int id)
@@ -82,13 +87,26 @@ namespace LIBRARY_MANAGEMENT.Classes
         public List<string> GetBorrowedBooks()
         {
             List<string> ListOfBorrewedB = new List<string>();
+            string books = "";
 
             command = new SqlCommand("SELECT nom,prenom,num_user,titre,auteur,date_emprunt, p.id, b.id,l.id_personne, l.id_book FROM personne as p,book AS b, library as l WHERE p.id=l.id_personne AND b.id=l.id_book ", Database.Instance);
             Database.Instance.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ListOfBorrewedB.Add($"{reader.GetString(0)} {reader.GetString(1)} ({reader.GetInt32(2)} ) : \" {reader.GetString(3)} \" - {reader.GetString(4)} (le {reader.GetDateTime(5)} )");
+                books = $"{reader.GetString(0)} {reader.GetString(1)} ({reader.GetInt32(2)} ) : \" {reader.GetString(3)} \" - {reader.GetString(4)} (le {reader.GetDateTime(5)} )";
+
+                TimeSpan ts = DateTime.Now - reader.GetDateTime(5);
+
+                if (ts.Days > 7)
+                {
+                    if (livreNonRendu != null)
+                        livreNonRendu(books);
+                } else
+                {
+                    ListOfBorrewedB.Add(books);
+                }
+                
             }
 
             command.Dispose();

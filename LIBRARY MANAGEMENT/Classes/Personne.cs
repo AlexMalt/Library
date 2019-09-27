@@ -151,9 +151,15 @@ namespace LIBRARY_MANAGEMENT.Classes
 
             if (etBill)
             {
+                Database.Instance.Open();
+                command = new SqlCommand("DELETE FROM login WHERE id_personne=@id", Database.Instance);
+                command.Parameters.Add(new SqlParameter("@id", id));
+                command.ExecuteNonQuery();
+                command.Dispose();
+
                 command = new SqlCommand("DELETE FROM personne WHERE id=@id", Database.Instance);
                 command.Parameters.Add(new SqlParameter("@id", id));
-                Database.Instance.Open();
+                
                 // permet d'executer la requete et retourne le nombre de row affectées
                 command.ExecuteNonQuery();
                 command.Dispose();

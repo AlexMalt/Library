@@ -30,7 +30,7 @@ namespace LIBRARY_MANAGEMENT.Classes
             do
             {
                 Console.Clear();
-                Console.WriteLine("------------BIENVENUE A LA BIB'INN-------");
+                Console.WriteLine("------------BIENVENUE A LA BIBLIOTHEQUE JACQUOUILLE CHIRAC-------");
                 Console.Write(" Login : ");
                 string l = Console.ReadLine();
                 Console.Write(" Password : ");
@@ -109,6 +109,7 @@ namespace LIBRARY_MANAGEMENT.Classes
 
                     case 2:
                         Console.Clear();
+                        Console.WriteLine("-------RECHERCHE DE LIVRES--------");
                         Console.WriteLine("Veuillez entrer votre recherche");
                         string recherche = Console.ReadLine();
                         ListeB = Book.GetBook(recherche);
@@ -116,22 +117,30 @@ namespace LIBRARY_MANAGEMENT.Classes
                         Console.WriteLine("-----Resultat de votre recherche-----");
                         foreach (Book agnie in ListeB)
                         {
-                            Console.WriteLine(" ID : {0} , Auteur : {1}, Livre {2}", agnie.Id, agnie.Auteur, agnie.Titre);
+                            Console.WriteLine(" ID : {0} , Auteur : {1}, Livre {2}, Status : {3}", agnie.Id, agnie.Auteur, agnie.Titre, agnie.Status);
                         }
                         Console.WriteLine("-------Fin de votre recherche-------");
                         break;
                     case 3:
+                        Console.WriteLine("-------EMPRUNTER UN LIVRE--------");
                         Console.Clear();
-                        Console.WriteLine("Saisir n° de carte de membre ");
-
-                        Int32.TryParse(Console.ReadLine(), out card);
+                        //Console.WriteLine("Saisir n° de carte de membre ");
+                        //Int32.TryParse(Console.ReadLine(), out card);
                         Console.WriteLine("Saisir n° du livre ");
 
                         Int32.TryParse(Console.ReadLine(), out idB);
-                        l.BorrowBook(card, idB);
+                        if (l.BorrowBook(pLogged.NumUser, idB))
+                        {
+                            Console.WriteLine("livre emprunté avec succès");
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERREUR : Problème emprunt livre, si vous n'êtes pas à l'origine de l'erreur, veuillez vous rapprocher de votre administrateur");
+                        }
                         break;
                     case 4:
                         Console.Clear();
+                        Console.WriteLine("-------RETOURNER UN LIVRE--------");
                         Console.WriteLine("Saisir n° du livre retourné ");
                         Int32.TryParse(Console.ReadLine(), out idB);
                         l.ReturnBook(idB);
@@ -151,6 +160,10 @@ namespace LIBRARY_MANAGEMENT.Classes
             Library l = new Library();
             List<Book> ListeB = new List<Book>();
             Console.Clear();
+            Library.livreNonRendu += (livre) =>
+            {
+                Console.WriteLine(livre +  " - Alerte seuil retard depassé !" );
+            };
             do
             {
 
@@ -195,11 +208,12 @@ namespace LIBRARY_MANAGEMENT.Classes
                         Console.WriteLine("-----Resultat de votre recherche-----");
                         foreach (Book agnie in ListeB)
                         {
-                            Console.WriteLine(" ID : {0} , Auteur : {1}, Livre {2}", agnie.Id, agnie.Auteur, agnie.Titre);
+                            Console.WriteLine(" ID : {0} , Auteur : {1}, Livre {2}, Status : {3}", agnie.Id, agnie.Auteur, agnie.Titre, agnie.Status);
                         }
                         Console.WriteLine("-------Fin de votre recherche-------");
                         break;
                     case 4:
+                        Console.WriteLine("-------EMPRUNTER UN LIVRE--------");
                         Console.Clear();
                         Console.WriteLine("Saisir n° de carte de membre ");
 
@@ -207,21 +221,31 @@ namespace LIBRARY_MANAGEMENT.Classes
                         Console.WriteLine("Saisir n° du livre ");
 
                         Int32.TryParse(Console.ReadLine(), out idB);
-                        l.BorrowBook(card, idB);
+                        if (l.BorrowBook(card, idB))
+                        {
+                            Console.WriteLine("livre emprunté avec succès");
+                        } else
+                        {
+                            Console.WriteLine("ERREUR : Problème emprunt livre, si vous n'êtes pas à l'origine de l'erreur, veuillez vous rapprocher de votre administrateur");
+                        }
                         break;
                     case 5:
+                        Console.WriteLine("-------RECHERCHE DE LIVRES--------");
                         Console.Clear();
                         Console.WriteLine("Saisir n° du livre retourné ");
                         Int32.TryParse(Console.ReadLine(), out idB);
                         l.ReturnBook(idB);
                         break;
                     case 6:
+                        Console.WriteLine("-------LISTE DES BOUQUINS EMPRUNTES--------");
                         Console.Clear();
                         List<string> ListBB = l.GetBorrowedBooks();
                         foreach (string borrowed in ListBB)
                         {
                             Console.WriteLine(borrowed);
+                            
                         }
+                        Console.WriteLine("----------------------------------_--------");
                         break;
 
                     default:

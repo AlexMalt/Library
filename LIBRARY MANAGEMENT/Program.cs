@@ -8,22 +8,39 @@ namespace LIBRARY_MANAGEMENT
     {
         static void Main(string[] args)
         {
-            
-            Personne p = IHM.Connection();
-            Console.Clear();
-            switch (p.UserType)
+            int choixPrinc;
+            do
             {
-                case UserTypes_Enum.admin:
-                    IHM.MenuPrincipalAdmin();
-                    break;
+                Console.Clear();
+                Console.WriteLine("Bievenue dans votre menu libraire zbrrrrrr");
+                Console.WriteLine("1- Se connecter");
+                Console.WriteLine("0- Quitter");
 
-                default:
-                    IHM.MenuBookOther();
-                    break;
-            }
+                Int32.TryParse(Console.ReadLine(), out choixPrinc);
+
+                switch (choixPrinc)
+                {
+                    case 1:
+                        Personne p = IHM.Connection();
+                        Console.Clear();
+                        switch (p.UserType)
+                        {
+                            case UserTypes_Enum.admin:
+                                IHM.MenuPrincipalAdmin();
+                                break;
+
+                            default:
+                                IHM.MenuBookOther();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (choixPrinc != 0);
             
 
-            
         }
     }
 }
