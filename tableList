@@ -1,0 +1,34 @@
+CREATE TABLE [dbo].[book] (
+    [Id]     INT            IDENTITY (1, 1) NOT NULL,
+    [auteur] NVARCHAR (50)  NOT NULL,
+    [titre]  NVARCHAR (200) NOT NULL,
+    [status] TINYINT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[library] (
+    [Id]           INT           IDENTITY (1, 1) NOT NULL,
+    [id_personne]  INT           NOT NULL,
+    [id_book]      INT           NOT NULL,
+    [date_emprunt] DATETIME2 (7) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[login] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [login]       NVARCHAR (50) NOT NULL,
+    [password]    NVARCHAR (50) NOT NULL,
+    [id_personne] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [idP_fk] FOREIGN KEY ([id_personne]) REFERENCES [dbo].[personne] ([Id])
+);
+
+CREATE TABLE [dbo].[personne] (
+    [Id]       INT           IDENTITY (1, 1) NOT NULL,
+    [nom]      NVARCHAR (50) NOT NULL,
+    [prenom]   NVARCHAR (50) NOT NULL,
+    [num_user] INT           NOT NULL,
+    [Role]     SMALLINT      NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
