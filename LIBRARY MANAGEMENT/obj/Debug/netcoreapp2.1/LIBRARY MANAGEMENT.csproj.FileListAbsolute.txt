@@ -9,3 +9,14 @@ C:\Users\Formation\source\repos\LIBRARY MANAGEMENT\LIBRARY MANAGEMENT\obj\Debug\
 C:\Users\Formation\source\repos\LIBRARY MANAGEMENT\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.pdb
 C:\Users\Formation\source\repos\LIBRARY MANAGEMENT\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.dll
 C:\Users\Formation\source\repos\LIBRARY MANAGEMENT\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.pdb
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.deps.json
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.runtimeconfig.json
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.runtimeconfig.dev.json
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.dll
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\bin\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.pdb
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.csprojAssemblyReference.cache
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.csproj.CoreCompileInputs.cache
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.AssemblyInfoInputs.cache
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.AssemblyInfo.cs
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.dll
+C:\Users\Formation\Documents\Formation\projets\Library\LIBRARY MANAGEMENT\obj\Debug\netcoreapp2.1\LIBRARY MANAGEMENT.pdb

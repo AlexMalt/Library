@@ -13,16 +13,16 @@ namespace LIBRARY_MANAGEMENT.Classes
         private int numUser;
         private int idP;
         private UserTypes_Enum userType;
-        private bool isLogged = false;
-        private SqlCommand command;
-        private SqlDataReader reader;
+        private static bool isLogged = false;
+        private static SqlCommand command;
+        private static SqlDataReader reader;
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
         public int NumUser { get => numUser; set => numUser = value; }
         public UserTypes_Enum UserType { get => userType; set => userType = value; }
         public int Id { get => id; set => id = value; }
         public int IdP { get => idP; set => idP = value; }
-        public bool IsLogged { get => isLogged; set => isLogged = value; }
+       
 
         public Personne()
         {
@@ -108,7 +108,7 @@ namespace LIBRARY_MANAGEMENT.Classes
 
         }
 
-        public List<Personne> GetAllUsers()
+        public static List<Personne> GetAllUsers()
         {
             List<Personne> listeU = new List<Personne>();
 
@@ -133,7 +133,7 @@ namespace LIBRARY_MANAGEMENT.Classes
             Database.Instance.Close();
             return listeU;
         }
-        public bool DeleteUser(int id)
+        public static bool DeleteUser(int id)
         {
             bool etBill = false;
 
@@ -164,7 +164,7 @@ namespace LIBRARY_MANAGEMENT.Classes
         }
        
 
-        public (Personne,bool) Login(string login, string mdp) 
+        public static (Personne,bool) Login(string login, string mdp) 
         {
             command = new SqlCommand("SELECT login, password,id_personne,nom,prenom,num_user,role FROM login,personne WHERE login=@login AND password=@mdp AND id_personne=personne.id", Database.Instance);
             command.Parameters.Add(new SqlParameter("@login", login));
@@ -182,7 +182,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                     NumUser = reader.GetInt32(5),
                     UserType = (UserTypes_Enum)reader.GetInt16(6)
                 };
-                IsLogged = true;
+                isLogged = true;
 
             }
             command.Dispose();

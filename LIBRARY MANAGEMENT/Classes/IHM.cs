@@ -35,7 +35,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                 string l = Console.ReadLine();
                 Console.Write(" Password : ");
                 string p = Console.ReadLine();
-                (Personne pers, bool isLoggedd) = pLogged.Login(l, p);
+                (Personne pers, bool isLoggedd) = Personne.Login(l, p);
                 pLogged = pers;
                 isLogged = isLoggedd;
             } while (isLogged == false);
@@ -237,11 +237,8 @@ namespace LIBRARY_MANAGEMENT.Classes
         public static void MenuUser()
         {
             int choixu;
-            Personne ut = new Personne();
             do
             {
-
-
                 Console.WriteLine("1- Ajouter un user");
                 Console.WriteLine("2- Supprimer un user");
                 Console.WriteLine("3- Lister les users");
@@ -275,7 +272,6 @@ namespace LIBRARY_MANAGEMENT.Classes
                                 compteur++;
                             }
 
-
                             Console.Write("Numéro de rôle :  ");
                             numRole = Convert.ToInt32(Console.ReadLine());
                             p.UserType = (UserTypes_Enum)numRole;
@@ -301,7 +297,7 @@ namespace LIBRARY_MANAGEMENT.Classes
 
                         try
                         {
-                            bool del = ut.DeleteUser(idUserDelete);
+                            bool del = Personne.DeleteUser(idUserDelete);
                             if (del)
                             {
                                 Console.WriteLine($"Utilisateur {idUserDelete} supprimé");
@@ -321,7 +317,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                         break;
                     case 3:
                         Console.Clear();
-                        List<Personne> listU = ut.GetAllUsers();
+                        List<Personne> listU = Personne.GetAllUsers();
                         Console.WriteLine("Liste des Utilisateurs");
                         foreach (Personne pers in listU)
                         {

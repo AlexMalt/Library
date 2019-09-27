@@ -14,15 +14,6 @@ CREATE TABLE [dbo].[library] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-CREATE TABLE [dbo].[login] (
-    [Id]          INT           IDENTITY (1, 1) NOT NULL,
-    [login]       NVARCHAR (50) NOT NULL,
-    [password]    NVARCHAR (50) NOT NULL,
-    [id_personne] INT           NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [idP_fk] FOREIGN KEY ([id_personne]) REFERENCES [dbo].[personne] ([Id])
-);
-
 CREATE TABLE [dbo].[personne] (
     [Id]       INT           IDENTITY (1, 1) NOT NULL,
     [nom]      NVARCHAR (50) NOT NULL,
@@ -32,3 +23,14 @@ CREATE TABLE [dbo].[personne] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
+CREATE TABLE [dbo].[login] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [login]       NVARCHAR (50) NOT NULL,
+    [password]    NVARCHAR (50) NOT NULL,
+    [id_personne] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [idP_fk] FOREIGN KEY ([id_personne]) REFERENCES [dbo].[personne] ([Id])
+);
+
+INSERT INTO personne (nom, prenom, num_user, role) VALUES ('admin', 'admin', 1, 0);
+INSERT INTO login (login, password, id_personne) VALUES ('admin', 'admin', 1);

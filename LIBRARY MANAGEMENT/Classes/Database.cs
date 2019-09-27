@@ -24,7 +24,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                 {
                     if (instance == null)
                     {
-                        instance = new SqlConnection(@"Data Source=(LocalDB)\libraryManage;Integrated Security=True");
+                        instance = new SqlConnection(@"Data Source=(LocalDB)\library;Integrated Security=True");
                     }
                     return instance;
                 }

@@ -1240,11 +1240,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Formation\\source\\repos\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT.csproj",
+      "projectUniqueName": "C:\\Users\\Formation\\Documents\\Formation\\projets\\Library\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT.csproj",
       "projectName": "LIBRARY MANAGEMENT",
-      "projectPath": "C:\\Users\\Formation\\source\\repos\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT.csproj",
+      "projectPath": "C:\\Users\\Formation\\Documents\\Formation\\projets\\Library\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT.csproj",
       "packagesPath": "C:\\Users\\Formation\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Formation\\source\\repos\\LIBRARY MANAGEMENT\\LIBRARY MANAGEMENT\\obj\\",
+      "outputPath": "C:\\Users\\Formation\\Documents\\Formation\\projets\\Library\\LIBRARY MANAGEMENT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
