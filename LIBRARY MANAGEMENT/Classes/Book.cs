@@ -11,8 +11,8 @@ namespace LIBRARY_MANAGEMENT.Classes
         private string titre;
         private string auteur;
         private BookStatus_Enum status;
-        private SqlCommand command;
-        private SqlDataReader reader;
+        private static SqlCommand command;
+        private static SqlDataReader reader;
 
         public int Id { get => id; set => id = value; }
         public string Titre { get => titre; set => titre = value; }
@@ -55,7 +55,7 @@ namespace LIBRARY_MANAGEMENT.Classes
             Database.Instance.Close();
         }
 
-        public List<Book> GetAllBooks()
+        public static List<Book> GetAllBooks()
         {
             List<Book> listeB = new List<Book>();
 
@@ -80,7 +80,7 @@ namespace LIBRARY_MANAGEMENT.Classes
             return listeB;
         }
 
-        public List<Book> GetBook(string research)
+        public static  List<Book> GetBook(string research)
         {
             List<Book> ListeBR = new List<Book>();
 

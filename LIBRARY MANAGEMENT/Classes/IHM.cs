@@ -98,7 +98,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                 {
                     case 1:
                         Console.Clear();
-                        ListeB = b.GetAllBooks();
+                        ListeB = Book.GetAllBooks();
                         Console.WriteLine("-------LISTE DES BOUQUINS--------");
                         foreach (Book tin in ListeB)
                         {
@@ -111,7 +111,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                         Console.Clear();
                         Console.WriteLine("Veuillez entrer votre recherche");
                         string recherche = Console.ReadLine();
-                        ListeB = b.GetBook(recherche);
+                        ListeB = Book.GetBook(recherche);
 
                         Console.WriteLine("-----Resultat de votre recherche-----");
                         foreach (Book agnie in ListeB)
@@ -168,7 +168,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                     case 1:
                         Console.Clear();
 
-                        ListeB = b.GetAllBooks();
+                        ListeB = Book.GetAllBooks();
                         Console.WriteLine("-------LISTE DES BOUQUINS--------");
                         foreach (Book tin in ListeB)
                         {
@@ -190,7 +190,7 @@ namespace LIBRARY_MANAGEMENT.Classes
                         Console.Clear();
                         Console.WriteLine("Veuillez entrer votre recherche");
                         string recherche = Console.ReadLine();
-                        ListeB = b.GetBook(recherche);
+                        ListeB = Book.GetBook(recherche);
 
                         Console.WriteLine("-----Resultat de votre recherche-----");
                         foreach (Book agnie in ListeB)
